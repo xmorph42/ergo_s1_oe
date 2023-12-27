@@ -5,7 +5,7 @@ manifest:
     - name: xmorph42
       url-base: https://github.com/xmorph42
   projects:
-    - name: urob-zmk
+    - name: zmk
       remote: xmorph42
       revision: xmorph42_ergo_s1
       import: app/west.yml
