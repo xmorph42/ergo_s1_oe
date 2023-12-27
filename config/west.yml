@@ -1,11 +1,11 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+      url-base: https://github.com/xmorph42
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: urob-zmk
+      revision: xmorph42_ergo_s1
       import: app/west.yml
   self:
     path: config
