@@ -1,0 +1,6 @@
+include:
+  - board: nice_nano
+    shield: ergo_s1_oe_left
+  - board: nice_nano
+    shield: ergo_s1_oe_right
+
