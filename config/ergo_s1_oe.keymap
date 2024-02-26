@@ -6,6 +6,8 @@
 // copy this block to https://nickcoutsos.github.io/keymap-editor/ for visualization/modification
 
 #include <behaviors.dtsi>
+#include <behaviors/mouse_keys.dtsi> // include behaviors for mkp:press, mmk:move and mcr:scroll
+
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -22,11 +24,8 @@
 
 // -- Change mouse behavior -----------------------------------------------------------------------
 
-// -- Mouse movements
-&mmv {
-    time-to-max-speed-ms = <400>;   // How long time until max speed is reached (default: 500)
-};
-
+// The default max speed is much too slow.
+// Note: when setting new speed the MOVE_{UP,LEFT,DOWN,RIGH} must per redefined
 #define U_MOUSE_MOVE_MAX 1400    // New max speed setting (default: ZMK_MOUSE_DEFAULT_MOVE_VAL 600)
 #undef MOVE_UP
 #undef MOVE_DOWN
@@ -36,24 +35,6 @@
 #define MOVE_DOWN  MOVE_Y(U_MOUSE_MOVE_MAX)
 #define MOVE_LEFT  MOVE_X(-U_MOUSE_MOVE_MAX)
 #define MOVE_RIGHT MOVE_X(U_MOUSE_MOVE_MAX)
-
-// -- Mouse scroll
-#if 0 // when whe want to override ...
-#define U_MOUSE_SCROLL_MAX 10   // New max speed setting (default: 10)
-
-#undef SCROLL_UP
-#undef SCROLL_DOWN
-#undef SCROLL_LEFT
-#undef SCROLL_RIGHT
-#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)
-#define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
-#define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
-#define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
-
-&msc {
-    time-to-max-speed-ms = <300>;   // How long time until max speed is reached (default: 300)
-};
-#endif
 
 // ------------------------------------------------------------------------------------------------
 
@@ -122,7 +103,7 @@
 &kp TAB         &kp Q       &kp W       &kp F        &kp P         &kp B                                                 &kp J       &kp L         &kp U        &kp Y       &kp SEMI    &kp BSPC
 &hm LSHIFT ESC  &hm LGUI A  &hm LALT R  &hm LCTRL S  &lst LSHFT T  &kp G                                                 &kp M       &rst RSHFT N  &hm RCTRL E  &hm LALT I  &hm RGUI O  &hm RSHFT SQT
 &mo 4           &kp Z       &kp X       &kp C        &kp D         &kp V      &kp LCTRL  &kp LALT  &kp CAPS   &kp RCTRL  &kp K       &kp H         &kp COMMA    &kp PERIOD  &kp SLASH   &lt 4 ENTER
-                &kp GRAVE   &kp BSLH    &kp LEFT     &kp RIGHT     &lt 1 ESC  &kp ENTER  &kp HOME  &kp PG_UP  &kp SPACE  &lt 2 BSPC  &kp UP        &kp DOWN     &kp LBKT    &kp RBKT
+                &kp GRAVE   &kp BSLH    &kp LEFT     &kp RIGHT     &lt 1 ESC  &kp ENTER  &kp HOME  &kp PG_UP  &kp SPACE  &mo 2   &kp UP        &kp DOWN     &kp LBKT    &kp RBKT
                                                                                          &kp END   &kp PG_DN
             >;
         };
